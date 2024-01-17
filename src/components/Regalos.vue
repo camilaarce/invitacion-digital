@@ -41,6 +41,7 @@ import evento from "@/mocks/eventos.json";
     align-items: center;
     flex-direction: column;
     background-color: beige;
+    padding: 6%;
 }
 
 h1 {
