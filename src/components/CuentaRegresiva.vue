@@ -81,17 +81,11 @@ onMounted(() => {
 
 h1 {
     font-family: 'Lobster', sans-serif;
-    font-size: 10em;
+    font-size: 100pt;
     color: rgb(51, 94, 94);
 }
 
 h3 {
     color: rgb(126, 50, 0);
-}
-
-@media only screen and (max-width: 1000px) {
-    h1 {
-        font-size: 5em;
-    }
 }
 </style>
