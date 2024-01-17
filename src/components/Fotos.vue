@@ -11,7 +11,7 @@
             :src="foto"
             :alt="foto"
             :style="{ '--i': index }"
-            class="animate"
+            loading="lazy"
           />
         </div>
         </div>
