@@ -31,6 +31,8 @@ onMounted(() => {
                 if (entry.isIntersecting) {
                     transitionImage.value = true;
                     observer.value.disconnect();
+                } else {
+                    transitionImage.value = false;
                 }
             });
         };
