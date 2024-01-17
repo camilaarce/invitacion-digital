@@ -13,6 +13,7 @@
     <Transition name="slide" mode="out-in">
       <v-btn
         v-if="transitionLugar"
+        size="x-large"
         width="400"
         height="60"
         variant="flat"

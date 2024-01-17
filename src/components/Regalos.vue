@@ -15,6 +15,8 @@
           <v-btn
             v-if="transitionRegalos"
             size="x-large"
+            width="400"
+            height="60"
             variant="flat"
             color="#003b6e"
             v-bind="props"

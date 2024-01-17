@@ -14,6 +14,8 @@
       <v-btn
         v-if="transitionHashtag"
         size="x-large"
+        width="400"
+        height="60"
         variant="flat"
         color="#dd7400"
         append-icon="mdi-instagram"

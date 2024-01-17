@@ -17,6 +17,8 @@
       <v-btn
         v-if="transitionConfirmacion"
         size="x-large"
+        width="400"
+        height="60"
         variant="flat"
         color="#003b6e"
         append-icon="mdi-whatsapp"
