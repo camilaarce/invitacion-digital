@@ -1,0 +1,57 @@
+<template>
+    <div class="container">
+    <h1 class="text-center">Mis fotos</h1>
+    <div class="image-container">
+    <div
+          v-for="(foto, index) in evento.fotos"
+          class="container-img"
+          :key="index"
+        >
+          <img
+            :src="foto"
+            :alt="foto"
+            :style="{ '--i': index }"
+            class="animate"
+          />
+        </div>
+        </div>
+    </div>
+</template>
+
+<script setup>
+import evento from "@/mocks/eventos.json";
+</script>
+
+<style scoped>
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10%;
+    background-color: rgb(226, 197, 160);
+}
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1%;
+}
+
+img {
+  height: 30vh;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 1000px) {
+  .image-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  img {
+  width: 45vw;
+  height: auto;
+}
+}
+</style>

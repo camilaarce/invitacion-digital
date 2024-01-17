@@ -1,0 +1,18 @@
+{
+    "name": "Augusto",
+    "date": "2025-04-03 18:00:00-0300",
+    "horario": "03 de abril a las 18hs",
+    "location": "Nombre del salón de fiestas",
+    "address": "Dirección del salón de fiestas",
+    "whatsapp": "3853005188",
+    "hashtag": "#primercumpleaugusto",
+    "cbu": "camilarce.mp",
+    "fotos": [
+        "./assets/img/foto1.jpg",
+        "./assets/img/foto2.jpg",
+        "./assets/img/foto3.jpg",
+        "./assets/img/foto4.jpg",
+        "./assets/img/foto5.jpg",
+        "./assets/img/foto6.jpg"
+    ]
+}
