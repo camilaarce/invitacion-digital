@@ -63,7 +63,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(226, 197, 160);
+  background-color: #e2c5a0;
 }
 
 .image-container {
