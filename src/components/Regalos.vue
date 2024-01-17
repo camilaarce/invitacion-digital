@@ -2,12 +2,12 @@
     <div class="container">
         <h1>Regalos</h1>
         <h3 class="text-center mb-5">¿Te gustaría regalarme algo más, aparte de tu maravillosa presencia?</h3>
-        <v-dialog width="500">
+        <v-dialog width="600">
             <template v-slot:activator="{ props }">
                 <v-btn size="x-large" variant="flat" color="#003b6e" v-bind="props" append-icon="mdi-gift">regalos</v-btn>
             </template>
             <template v-slot:default="{ isActive }">
-                <v-card>
+                <v-card style="padding: 5%;">
                     <v-card-text>
                         <Icon icon="teenyicons:gift-outline" height="100" class="icono mt-5" style="display: block; margin: 0 auto;" />
                         <h2>Lo más importante para mí es tu presencia</h2>
