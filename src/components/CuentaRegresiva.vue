@@ -75,12 +75,6 @@ onMounted(() => {
     calcularTiempoRestante();
     interval.value = setInterval(calcularTiempoRestante, 1000);
     transitionName.value = true;
-    setInterval(() => {
-        transitionName.value = false;
-    }, 5000);
-    setInterval(() => {
-        transitionName.value = true;
-    }, 1000);
 })
 </script>
 
