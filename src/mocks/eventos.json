@@ -8,11 +8,11 @@
     "hashtag": "#primercumpleaugusto",
     "cbu": "camilarce.mp",
     "fotos": [
-        "./assets/img/foto1.jpg",
-        "./assets/img/foto2.jpg",
-        "./assets/img/foto3.jpg",
-        "./assets/img/foto4.jpg",
-        "./assets/img/foto5.jpg",
-        "./assets/img/foto6.jpg"
+        "https://i.ibb.co/6gcq4CK/foto1.jpg",
+        "https://i.ibb.co/f94VrZ0/foto2.jpg",
+        "https://i.ibb.co/XChtCsr/foto3.jpg",
+        "https://i.ibb.co/CvDys8n/foto4.jpg",
+        "https://i.ibb.co/NF3J8xH/foto5.jpg",
+        "https://i.ibb.co/ftvBfK4/foto6.jpg"
     ]
 }
