@@ -5,15 +5,17 @@
       <h1 v-if="transitionName">{{ evento.name }}</h1>
     </Transition>
     <Transition name="slide" mode="out-in">
-      <h3 v-if="transitionName">
+      <h2 v-if="transitionName">
         <v-row>
           <v-col cols="3">
             <p class="text-center">{{ tiempoRestante.dias }}</p>
-            <p class="text-center">dias</p>
+            <p class="text-center">
+              {{ tiempoRestante.dias == 1 ? "dia" : "dias" }}
+            </p>
           </v-col>
           <v-col cols="3">
             <p class="text-center">{{ tiempoRestante.horas }}</p>
-            <p class="text-center">horas</p>
+            <p class="text-center">hs</p>
           </v-col>
           <v-col cols="3">
             <p class="text-center">{{ tiempoRestante.minutos }}</p>
@@ -24,7 +26,7 @@
             <p class="text-center">seg</p>
           </v-col>
         </v-row>
-      </h3>
+      </h2>
     </Transition>
   </div>
 </template>
@@ -121,7 +123,7 @@ h1 {
   color: rgb(51, 94, 94);
 }
 
-h3 {
+h2 {
   color: rgb(126, 50, 0);
 }
 
