@@ -2,12 +2,12 @@
   <div class="container">
     <div class="lugar"></div>
     <Transition name="zoom" mode="out-in">
-      <h1 v-if="transitionLugar" class="mb-5">¿Dónde y cuándo?</h1>
+      <h1 v-if="transitionLugar" class="mb-5 text-center">¿Dónde y cuándo?</h1>
     </Transition>
     <Transition name="fade" mode="out-in">
       <div v-if="transitionLugar">
-        <h3>{{ evento.address }}</h3>
-        <h3 class="mb-5">{{ evento.horario }}</h3>
+        <h3 class="text-center">{{ evento.address }}</h3>
+        <h3 class="mb-5 text-center">{{ evento.horario }}</h3>
       </div>
     </Transition>
     <Transition name="slide" mode="out-in">

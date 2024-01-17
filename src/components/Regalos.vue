@@ -91,12 +91,11 @@ onMounted(() => {
   align-items: center;
   flex-direction: column;
   background-color: beige;
-  padding: 6%;
 }
 
 h1 {
   font-family: "Lobster", sans-serif;
-  font-size: 100pt;
+  font-size: 90pt;
   color: rgb(51, 94, 94);
 }
 

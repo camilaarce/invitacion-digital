@@ -76,6 +76,12 @@ img {
   height: 30vh;
   aspect-ratio: 4/3;
   object-fit: cover;
+  transition: all 1s ease;
+}
+
+img:hover {
+  height: 40vh;
+  transition: all 1s ease;
 }
 
 h1 {
@@ -105,6 +111,12 @@ h1 {
   img {
     width: 45vw;
     height: auto;
+    transition: all 1s ease;
+  }
+
+  img:hover {
+    width: 50vh;
+    transition: all 1s ease;
   }
 }
 </style>
