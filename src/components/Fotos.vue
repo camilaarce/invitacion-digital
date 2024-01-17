@@ -30,7 +30,6 @@ onMounted(() => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     transitionImage.value = true;
-                    console.log('port');
                     observer.value.disconnect();
                 }
             });
