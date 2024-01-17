@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-    <h1 class="text-center">Mis fotos</h1>
+    <h1 class="text-center mb-10">Mis fotos</h1>
     <div class="image-container">
     <div
           v-for="(foto, index) in evento.fotos"
@@ -23,6 +23,7 @@ import evento from "@/mocks/eventos.json";
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 .container {
     height: 100vh;
     display: flex;
@@ -42,6 +43,12 @@ img {
   height: 30vh;
   aspect-ratio: 4/3;
   object-fit: cover;
+}
+
+h1 {
+    font-family: 'Lobster', sans-serif;
+    color: #496074;
+    font-size: 60pt;
 }
 
 @media only screen and (max-width: 1000px) {
