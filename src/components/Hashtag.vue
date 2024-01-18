@@ -1,6 +1,5 @@
 <template>
   <div class="container contenedor-hashtag">
-    
     <Transition name="zoom" mode="out-in">
       <h1 v-if="transitionHashtag" class="text-center">Compartí el momento</h1>
     </Transition>
@@ -28,7 +27,8 @@
           >ver en instagram</a
         ></v-btn
       ></Transition
-    ><div class="hashtag"></div>
+    >
+    <div class="hashtag"></div>
   </div>
 </template>
   
@@ -41,18 +41,22 @@ const transitionHashtag = ref(false);
 const observer = ref(null);
 onMounted(() => {
   setInterval(() => {
-    const contenedor = document.querySelector('.contenedor-hashtag'); // Reemplaza 'miContenedor' con el ID de tu contenedor
+    const contenedor = document.querySelector(".contenedor-hashtag");
 
+    const rect = contenedor.getBoundingClientRect();
 
-
-  const rect = contenedor.getBoundingClientRect();
-
-  // Si el margen superior del contenedor está junto al margen superior de la pantalla
-  if (rect.top <= 0) {
-    transitionHashtag.value = true;
-  } else {
-    transitionHashtag.value = false;
-  };
+    if (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    ) {
+      transitionHashtag.value = true;
+    } else {
+      transitionHashtag.value = false;
+      console.log(rect.top);
+    }
   }, 1000);
 });
 </script>
@@ -121,11 +125,5 @@ h3 {
   opacity: 0;
   filter: blur(10px);
   transform: translateX(100px);
-}
-
-@media only screen and (max-width: 1000px) {
-  .container {
-    height: 60vh;
-  }
 }
 </style>

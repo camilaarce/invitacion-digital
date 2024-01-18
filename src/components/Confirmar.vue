@@ -1,6 +1,5 @@
 <template>
   <div class="container contenedor-confirmar">
-    
     <Transition name="zoom" mode="out-in">
       <h1 v-if="transitionConfirmacion" class="mb-5 text-center">
         Confirmar asistencia
@@ -32,7 +31,8 @@
           >whatsapp</a
         ></v-btn
       >
-    </Transition><div class="confirmacion"></div>
+    </Transition>
+    <div class="confirmacion"></div>
   </div>
 </template>
   
@@ -46,18 +46,22 @@ const observer = ref(null);
 
 onMounted(() => {
   setInterval(() => {
-    const contenedor = document.querySelector('.contenedor-confirmar'); // Reemplaza 'miContenedor' con el ID de tu contenedor
+    const contenedor = document.querySelector(".contenedor-confirmar"); // Reemplaza 'miContenedor' con el ID de tu contenedor
 
+    const rect = contenedor.getBoundingClientRect();
 
-
-  const rect = contenedor.getBoundingClientRect();
-
-  // Si el margen superior del contenedor está junto al margen superior de la pantalla
-  if (rect.top <= 0) {
-    transitionConfirmacion.value = true;
-  } else {
-    transitionConfirmacion.value = false;
-  };
+    // Si el margen superior del contenedor está junto al margen superior de la pantalla
+    if (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    ) {
+      transitionConfirmacion.value = true;
+    } else {
+      transitionConfirmacion.value = false;
+    }
   }, 1000);
 });
 </script>
@@ -124,11 +128,5 @@ a {
   opacity: 0;
   filter: blur(10px);
   transform: translateY(100%);
-}
-
-@media only screen and (max-width: 1000px) {
-  .container {
-    height: 60vh;
-  }
 }
 </style>

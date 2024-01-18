@@ -1,6 +1,8 @@
 <template>
   <div class="container contenedor-fotos">
-    <h1 class="text-center mb-10">Mis fotos</h1>
+    <Transition name="slide" mode="out-in">
+      <h1 v-if="transitionImage" class="text-center mb-10">Mis fotos</h1>
+    </Transition>
     <div class="image-container">
       <div
         v-for="(foto, index) in evento.fotos"
@@ -17,7 +19,8 @@
           />
         </Transition>
       </div>
-    </div><div class="imagen"></div>
+    </div>
+    <div class="imagen"></div>
   </div>
 </template>
 
@@ -30,18 +33,22 @@ const transitionImage = ref(false);
 const observer = ref(null);
 onMounted(() => {
   setInterval(() => {
-    const contenedor = document.querySelector('.contenedor-fotos'); // Reemplaza 'miContenedor' con el ID de tu contenedor
+    const contenedor = document.querySelector(".contenedor-fotos"); // Reemplaza 'miContenedor' con el ID de tu contenedor
 
+    const rect = contenedor.getBoundingClientRect();
 
-
-  const rect = contenedor.getBoundingClientRect();
-
-  // Si el margen superior del contenedor está junto al margen superior de la pantalla
-  if (rect.top <= 0) {
-    transitionImage.value = true;
-  } else {
-    transitionImage.value = false;
-  };
+    // Si el margen superior del contenedor está junto al margen superior de la pantalla
+    if (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    ) {
+      transitionImage.value = true;
+    } else {
+      transitionImage.value = false;
+    }
   }, 1000);
 });
 </script>

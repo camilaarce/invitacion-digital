@@ -1,6 +1,5 @@
 <template>
   <div class="container contenedor-lugar">
-    
     <Transition name="zoom" mode="out-in">
       <h1 v-if="transitionLugar" class="mb-5 text-center">¿Dónde y cuándo?</h1>
     </Transition>
@@ -25,7 +24,8 @@
           >Ver en maps</a
         ></v-btn
       >
-    </Transition><div class="lugar"></div>
+    </Transition>
+    <div class="lugar"></div>
   </div>
 </template>
 
@@ -37,18 +37,21 @@ const transitionLugar = ref(false);
 
 onMounted(() => {
   setInterval(() => {
-    const contenedor = document.querySelector('.contenedor-lugar'); // Reemplaza 'miContenedor' con el ID de tu contenedor
+    const contenedor = document.querySelector(".contenedor-lugar");
 
+    const rect = contenedor.getBoundingClientRect();
 
-
-  const rect = contenedor.getBoundingClientRect();
-
-  // Si el margen superior del contenedor está junto al margen superior de la pantalla
-  if (rect.top <= 0) {
-    transitionLugar.value = true;
-  } else {
-    transitionLugar.value = false;
-  };
+    if (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    ) {
+      transitionLugar.value = true;
+    } else {
+      transitionLugar.value = false;
+    }
   }, 1000);
 });
 </script>
@@ -114,11 +117,5 @@ a {
   opacity: 0;
   filter: blur(10px);
   transform: translateY(100%);
-}
-
-@media only screen and (max-width: 1000px) {
-  .container {
-    height: 60vh;
-  }
 }
 </style>

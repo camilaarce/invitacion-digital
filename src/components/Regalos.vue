@@ -1,6 +1,5 @@
 <template>
   <div class="container contenedor-regalos">
-    
     <Transition name="zoom" mode="out-in">
       <h1 v-if="transitionRegalos">Regalos</h1>
     </Transition>
@@ -23,7 +22,8 @@
             append-icon="mdi-gift"
             >regalos</v-btn
           ></Transition
-        ><div class="regalo"></div>
+        >
+        <div class="regalo"></div>
       </template>
       <template v-slot:default="{ isActive }">
         <v-card style="padding: 5%">
@@ -59,18 +59,22 @@ const observer = ref(null);
 
 onMounted(() => {
   setInterval(() => {
-    const contenedor = document.querySelector('.contenedor-regalos'); // Reemplaza 'miContenedor' con el ID de tu contenedor
+    const contenedor = document.querySelector(".contenedor-regalos"); // Reemplaza 'miContenedor' con el ID de tu contenedor
 
+    const rect = contenedor.getBoundingClientRect();
 
-
-  const rect = contenedor.getBoundingClientRect();
-
-  // Si el margen superior del contenedor está junto al margen superior de la pantalla
-  if (rect.top <= 0) {
-    transitionRegalos.value = true;
-  } else {
-    transitionRegalos.value = false;
-  };
+    // Si el margen superior del contenedor está junto al margen superior de la pantalla
+    if (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    ) {
+      transitionRegalos.value = true;
+    } else {
+      transitionRegalos.value = false;
+    }
   }, 1000);
 });
 </script>
@@ -160,11 +164,5 @@ h3 {
   opacity: 0;
   filter: blur(10px);
   transform: translateY(-100%);
-}
-
-@media only screen and (max-width: 1000px) {
-  .container {
-    height: 60vh;
-  }
 }
 </style>
