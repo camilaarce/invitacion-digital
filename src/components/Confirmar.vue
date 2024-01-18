@@ -73,7 +73,7 @@ onMounted(() => {
   <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 .container {
-  height: 100vh;
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
