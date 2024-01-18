@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="hashtag"></div>
+  <div class="container contenedor-hashtag">
+    
     <Transition name="zoom" mode="out-in">
       <h1 v-if="transitionHashtag" class="text-center">Compartí el momento</h1>
     </Transition>
@@ -28,7 +28,7 @@
           >ver en instagram</a
         ></v-btn
       ></Transition
-    >
+    ><div class="hashtag"></div>
   </div>
 </template>
   
@@ -41,26 +41,18 @@ const transitionHashtag = ref(false);
 const observer = ref(null);
 onMounted(() => {
   setInterval(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    };
+    const contenedor = document.querySelector('.contenedor-hashtag'); // Reemplaza 'miContenedor' con el ID de tu contenedor
 
-    const handleIntersection = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          transitionHashtag.value = true;
-          observer.value.disconnect();
-        } else {
-          transitionHashtag.value = false;
-        }
-      });
-    };
 
-    observer.value = new IntersectionObserver(handleIntersection, options);
 
-    observer.value.observe(document.querySelector(".hashtag"));
+  const rect = contenedor.getBoundingClientRect();
+
+  // Si el margen superior del contenedor está junto al margen superior de la pantalla
+  if (rect.top <= 0) {
+    transitionHashtag.value = true;
+  } else {
+    transitionHashtag.value = false;
+  };
   }, 1000);
 });
 </script>

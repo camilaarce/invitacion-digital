@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="regalo"></div>
+  <div class="container contenedor-regalos">
+    
     <Transition name="zoom" mode="out-in">
       <h1 v-if="transitionRegalos">Regalos</h1>
     </Transition>
@@ -23,7 +23,7 @@
             append-icon="mdi-gift"
             >regalos</v-btn
           ></Transition
-        >
+        ><div class="regalo"></div>
       </template>
       <template v-slot:default="{ isActive }">
         <v-card style="padding: 5%">
@@ -59,26 +59,18 @@ const observer = ref(null);
 
 onMounted(() => {
   setInterval(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    };
+    const contenedor = document.querySelector('.contenedor-regalos'); // Reemplaza 'miContenedor' con el ID de tu contenedor
 
-    const handleIntersection = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          transitionRegalos.value = true;
-          observer.value.disconnect();
-        } else {
-          transitionRegalos.value = false;
-        }
-      });
-    };
 
-    observer.value = new IntersectionObserver(handleIntersection, options);
 
-    observer.value.observe(document.querySelector(".regalo"));
+  const rect = contenedor.getBoundingClientRect();
+
+  // Si el margen superior del contenedor está junto al margen superior de la pantalla
+  if (rect.top <= 0) {
+    transitionRegalos.value = true;
+  } else {
+    transitionRegalos.value = false;
+  };
   }, 1000);
 });
 </script>

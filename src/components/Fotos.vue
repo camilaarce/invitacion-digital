@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container contenedor-fotos">
     <h1 class="text-center mb-10">Mis fotos</h1>
     <div class="image-container">
       <div
@@ -17,7 +17,7 @@
           />
         </Transition>
       </div>
-    </div>
+    </div><div class="imagen"></div>
   </div>
 </template>
 
@@ -30,26 +30,18 @@ const transitionImage = ref(false);
 const observer = ref(null);
 onMounted(() => {
   setInterval(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    };
+    const contenedor = document.querySelector('.contenedor-fotos'); // Reemplaza 'miContenedor' con el ID de tu contenedor
 
-    const handleIntersection = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          transitionImage.value = true;
-          observer.value.disconnect();
-        } else {
-          transitionImage.value = false;
-        }
-      });
-    };
 
-    observer.value = new IntersectionObserver(handleIntersection, options);
 
-    observer.value.observe(document.querySelector(".image-container"));
+  const rect = contenedor.getBoundingClientRect();
+
+  // Si el margen superior del contenedor está junto al margen superior de la pantalla
+  if (rect.top <= 0) {
+    transitionImage.value = true;
+  } else {
+    transitionImage.value = false;
+  };
   }, 1000);
 });
 </script>
@@ -111,12 +103,6 @@ h1 {
   img {
     width: 45vw;
     height: auto;
-    transition: all 1s ease;
-  }
-
-  img:hover {
-    width: 50vh;
-    transition: all 1s ease;
   }
 }
 </style>

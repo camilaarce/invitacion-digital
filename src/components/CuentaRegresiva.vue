@@ -1,8 +1,8 @@
 <template>
-  <div class="image--container">
+  <div class="image--container contenedor-nombre">
     <div class="kenburns-top"></div>
     <div class="container">
-      <div class="name"></div>
+
       <Transition name="fade" mode="out-in">
         <h1 v-if="transitionName">{{ evento.name }}</h1>
       </Transition>
@@ -30,6 +30,7 @@
           </v-row>
         </h2>
       </Transition>
+      <div class="name"></div>
     </div>
   </div>
 </template>
@@ -84,26 +85,18 @@ onMounted(() => {
   interval.value = setInterval(calcularTiempoRestante, 1000);
 
   setInterval(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
+    const contenedor = document.querySelector('.contenedor-nombre'); // Reemplaza 'miContenedor' con el ID de tu contenedor
+
+
+
+    const rect = contenedor.getBoundingClientRect();
+
+    // Si el margen superior del contenedor está junto al margen superior de la pantalla
+    if (rect.top <= 0) {
+      transitionName.value = true;
+    } else {
+      transitionName.value = false;
     };
-
-    const handleIntersection = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          transitionName.value = true;
-          observer.value.disconnect();
-        } else {
-          transitionName.value = false;
-        }
-      });
-    };
-
-    observer.value = new IntersectionObserver(handleIntersection, options);
-
-    observer.value.observe(document.querySelector(".name"));
   }, 1000);
 });
 </script>
@@ -143,6 +136,7 @@ onMounted(() => {
     transform: scale(1) translateY(0);
     transform-origin: 50% 16%;
   }
+
   100% {
     transform: scale(1.25) translateY(-15px);
     transform-origin: top;

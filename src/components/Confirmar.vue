@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="confirmacion"></div>
+  <div class="container contenedor-confirmar">
+    
     <Transition name="zoom" mode="out-in">
       <h1 v-if="transitionConfirmacion" class="mb-5 text-center">
         Confirmar asistencia
@@ -32,7 +32,7 @@
           >whatsapp</a
         ></v-btn
       >
-    </Transition>
+    </Transition><div class="confirmacion"></div>
   </div>
 </template>
   
@@ -46,26 +46,18 @@ const observer = ref(null);
 
 onMounted(() => {
   setInterval(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    };
+    const contenedor = document.querySelector('.contenedor-confirmar'); // Reemplaza 'miContenedor' con el ID de tu contenedor
 
-    const handleIntersection = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          transitionConfirmacion.value = true;
-          observer.value.disconnect();
-        } else {
-          transitionConfirmacion.value = false;
-        }
-      });
-    };
 
-    observer.value = new IntersectionObserver(handleIntersection, options);
 
-    observer.value.observe(document.querySelector(".confirmacion"));
+  const rect = contenedor.getBoundingClientRect();
+
+  // Si el margen superior del contenedor está junto al margen superior de la pantalla
+  if (rect.top <= 0) {
+    transitionConfirmacion.value = true;
+  } else {
+    transitionConfirmacion.value = false;
+  };
   }, 1000);
 });
 </script>
