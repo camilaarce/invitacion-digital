@@ -1,5 +1,6 @@
 <template>
   <div class="container contenedor-regalos">
+    <div class="regalos"></div>
     <Transition name="zoom" mode="out-in">
       <h1 v-if="transitionRegalos">Regalos</h1>
     </Transition>
@@ -23,7 +24,6 @@
             >regalos</v-btn
           ></Transition
         >
-        <div class="regalo"></div>
       </template>
       <template v-slot:default="{ isActive }">
         <v-card style="padding: 5%">
@@ -56,25 +56,25 @@ import { ref, onMounted } from "vue";
 const transitionRegalos = ref(false);
 
 const observer = ref(null);
-
 onMounted(() => {
   setInterval(() => {
-    const contenedor = document.querySelector(".contenedor-regalos"); // Reemplaza 'miContenedor' con el ID de tu contenedor
-
-    const rect = contenedor.getBoundingClientRect();
-
-    // Si el margen superior del contenedor está junto al margen superior de la pantalla
-    if (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    ) {
-      transitionRegalos.value = true;
-    } else {
-      transitionRegalos.value = false;
-    }
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          transitionRegalos.value = true;
+          observer.value.disconnect();
+        } else {
+          transitionRegalos.value = false;
+        }
+      });
+    };
+    observer.value = new IntersectionObserver(handleIntersection, options);
+    observer.value.observe(document.querySelector(".regalos"));
   }, 1000);
 });
 </script>

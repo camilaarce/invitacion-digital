@@ -1,5 +1,6 @@
 <template>
   <div class="container contenedor-lugar">
+    <div class="lugar"></div>
     <Transition name="zoom" mode="out-in">
       <h1 v-if="transitionLugar" class="mb-5 text-center">¿Dónde y cuándo?</h1>
     </Transition>
@@ -25,7 +26,6 @@
         ></v-btn
       >
     </Transition>
-    <div class="lugar"></div>
   </div>
 </template>
 
@@ -35,23 +35,26 @@ import { ref, onMounted } from "vue";
 
 const transitionLugar = ref(false);
 
+const observer = ref(null);
 onMounted(() => {
   setInterval(() => {
-    const contenedor = document.querySelector(".contenedor-lugar");
-
-    const rect = contenedor.getBoundingClientRect();
-
-    if (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    ) {
-      transitionLugar.value = true;
-    } else {
-      transitionLugar.value = false;
-    }
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          transitionLugar.value = true;
+          observer.value.disconnect();
+        } else {
+          transitionLugar.value = false;
+        }
+      });
+    };
+    observer.value = new IntersectionObserver(handleIntersection, options);
+    observer.value.observe(document.querySelector(".lugar"));
   }, 1000);
 });
 </script>

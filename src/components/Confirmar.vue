@@ -1,5 +1,6 @@
 <template>
   <div class="container contenedor-confirmar">
+    <div class="confirmacion"></div>
     <Transition name="zoom" mode="out-in">
       <h1 v-if="transitionConfirmacion" class="mb-5 text-center">
         Confirmar asistencia
@@ -32,7 +33,6 @@
         ></v-btn
       >
     </Transition>
-    <div class="confirmacion"></div>
   </div>
 </template>
   
@@ -43,25 +43,25 @@ import { ref, onMounted } from "vue";
 const transitionConfirmacion = ref(false);
 
 const observer = ref(null);
-
 onMounted(() => {
   setInterval(() => {
-    const contenedor = document.querySelector(".contenedor-confirmar"); // Reemplaza 'miContenedor' con el ID de tu contenedor
-
-    const rect = contenedor.getBoundingClientRect();
-
-    // Si el margen superior del contenedor está junto al margen superior de la pantalla
-    if (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    ) {
-      transitionConfirmacion.value = true;
-    } else {
-      transitionConfirmacion.value = false;
-    }
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          transitionConfirmacion.value = true;
+          observer.value.disconnect();
+        } else {
+          transitionConfirmacion.value = false;
+        }
+      });
+    };
+    observer.value = new IntersectionObserver(handleIntersection, options);
+    observer.value.observe(document.querySelector(".confirmacion"));
   }, 1000);
 });
 </script>
