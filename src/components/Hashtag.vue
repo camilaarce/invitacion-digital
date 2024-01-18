@@ -55,7 +55,6 @@ onMounted(() => {
       transitionHashtag.value = true;
     } else {
       transitionHashtag.value = false;
-      console.log(rect.top);
     }
   }, 1000);
 });
