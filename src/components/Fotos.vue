@@ -103,7 +103,7 @@ h1 {
   transform: translateX(100px);
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
   .image-container {
     grid-template-columns: repeat(2, 1fr);
   }
