@@ -3,7 +3,6 @@
     @click="startAudio"
     color="teal-accent-4"
     :icon="!play ? 'mdi-music' : 'mdi-music-off'"
-    height="50"
   ></v-btn>
 </template>
   
@@ -40,4 +39,10 @@ const startAudio = () => {
 </script>
 
 <style scoped>
+.v-btn {
+  width: 3vw;
+  min-width: 50px;
+  height: auto;
+  aspect-ratio: 1/1;
+}
 </style>
