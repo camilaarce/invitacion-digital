@@ -35,7 +35,7 @@ import HomeView from "./views/HomeView.vue";
 .balloon::before {
   position: absolute;
   content: "";
-  width: 1.5px;
+  width: 1.2px;
   height: 150px;
   background-color: white;
   top: 110px;

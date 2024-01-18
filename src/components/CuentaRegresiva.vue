@@ -1,33 +1,36 @@
 <template>
-  <div class="container">
-    <div class="name"></div>
-    <Transition name="fade" mode="out-in">
-      <h1 v-if="transitionName">{{ evento.name }}</h1>
-    </Transition>
-    <Transition name="slide" mode="out-in">
-      <h2 v-if="transitionName">
-        <v-row>
-          <v-col cols="3">
-            <p class="text-center">{{ tiempoRestante.dias }}</p>
-            <p class="text-center">
-              {{ tiempoRestante.dias == 1 ? "dia" : "dias" }}
-            </p>
-          </v-col>
-          <v-col cols="3">
-            <p class="text-center">{{ tiempoRestante.horas }}</p>
-            <p class="text-center">hs</p>
-          </v-col>
-          <v-col cols="3">
-            <p class="text-center">{{ tiempoRestante.minutos }}</p>
-            <p class="text-center">min</p>
-          </v-col>
-          <v-col cols="3">
-            <p class="text-center">{{ tiempoRestante.segundos }}</p>
-            <p class="text-center">seg</p>
-          </v-col>
-        </v-row>
-      </h2>
-    </Transition>
+  <div class="image-container">
+    <div class="kenburns-top"></div>
+    <div class="container">
+      <div class="name"></div>
+      <Transition name="fade" mode="out-in">
+        <h1 v-if="transitionName">{{ evento.name }}</h1>
+      </Transition>
+      <Transition name="slide" mode="out-in">
+        <h2 v-if="transitionName">
+          <v-row>
+            <v-col cols="3">
+              <p class="text-center">{{ tiempoRestante.dias }}</p>
+              <p class="text-center">
+                {{ tiempoRestante.dias == 1 ? "dia" : "dias" }}
+              </p>
+            </v-col>
+            <v-col cols="3">
+              <p class="text-center">{{ tiempoRestante.horas }}</p>
+              <p class="text-center">hs</p>
+            </v-col>
+            <v-col cols="3">
+              <p class="text-center">{{ tiempoRestante.minutos }}</p>
+              <p class="text-center">min</p>
+            </v-col>
+            <v-col cols="3">
+              <p class="text-center">{{ tiempoRestante.segundos }}</p>
+              <p class="text-center">seg</p>
+            </v-col>
+          </v-row>
+        </h2>
+      </Transition>
+    </div>
   </div>
 </template>
 
@@ -115,16 +118,49 @@ onMounted(() => {
   align-items: center;
   flex-direction: column;
   background-color: beige;
+  overflow: hidden;
+}
+
+.image-container {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.kenburns-top {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("https://i.ibb.co/ftvBfK4/foto6.jpg") center/cover no-repeat;
+  animation: kenburns-top 5s ease-in-out infinite alternate-reverse both;
+  filter: brightness(0.3);
+}
+
+@keyframes kenburns-top {
+  0% {
+    transform: scale(1) translateY(0);
+    transform-origin: 50% 16%;
+  }
+  100% {
+    transform: scale(1.25) translateY(-15px);
+    transform-origin: top;
+  }
 }
 
 h1 {
   font-family: "Lobster", sans-serif;
   font-size: 100pt;
   color: rgb(51, 94, 94);
+  z-index: 10;
+  text-shadow: 0 0 10px #ffffff82, 0 0 30px #ffffff82, 0 0 0px #ffffff82;
+  padding: 2%;
 }
 
 h2 {
-  color: rgb(126, 50, 0);
+  color: rgb(169, 109, 68);
+  z-index: 10;
 }
 
 .fade-enter-active,
