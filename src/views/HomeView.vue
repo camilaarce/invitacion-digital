@@ -7,6 +7,7 @@
     <Confirmar class="items" />
     <Hashtag class="items" />
   </div>
+  <Musica class="music" />
 </template>
 
 <script setup>
@@ -16,6 +17,7 @@ import Fotos from "@/components/Fotos.vue";
 import Hashtag from "@/components/Hashtag.vue";
 import Lugar from "@/components/Lugar.vue";
 import Regalos from "@/components/Regalos.vue";
+import Musica from "@/components/Musica.vue";
 </script>
 
 <style scoped>
@@ -23,6 +25,13 @@ import Regalos from "@/components/Regalos.vue";
   max-height: 100vh;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
+  position: relative;
+}
+
+.music {
+  position: absolute;
+  top: 1%;
+  right: 1%;
 }
 
 .items {
