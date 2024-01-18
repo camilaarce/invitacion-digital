@@ -69,12 +69,13 @@ onMounted(() => {
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
 .container {
-  height: 60vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: #e2c5a0;
+  padding: 0 10%;
 }
 
 a {
@@ -128,5 +129,11 @@ h3 {
   opacity: 0;
   filter: blur(10px);
   transform: translateX(100px);
+}
+
+@media only screen and (max-width: 1000px) {
+  .container {
+    height: 60vh;
+  }
 }
 </style>

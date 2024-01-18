@@ -66,7 +66,7 @@ onMounted(() => {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 .container {
-  height: 60vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,5 +124,11 @@ a {
   opacity: 0;
   filter: blur(10px);
   transform: translateY(100%);
+}
+
+@media only screen and (max-width: 1000px) {
+  .container {
+    height: 60vh;
+  }
 }
 </style>
