@@ -93,6 +93,7 @@ onMounted(() => {
   align-items: center;
   flex-direction: column;
   background-color: beige;
+  padding: 0 10%;
 }
 
 h1 {

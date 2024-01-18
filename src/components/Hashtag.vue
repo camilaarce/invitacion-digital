@@ -88,6 +88,11 @@ h1 {
   font-size: 50pt;
 }
 
+h3 {
+  font-size: 25pt;
+  color: rgb(97, 97, 97);
+}
+
 .zoom-enter-active,
 .zoom-leave-active {
   transition: all 1s ease;
