@@ -1,5 +1,5 @@
 <template>
-  <div class="image-container">
+  <div class="image--container">
     <div class="kenburns-top"></div>
     <div class="container">
       <div class="name"></div>
@@ -121,7 +121,7 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.image-container {
+.image--container {
   position: relative;
   height: 100%;
   overflow: hidden;
