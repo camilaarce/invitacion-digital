@@ -1,6 +1,6 @@
 <template>
-  <div class="image--container contenedor-nombre">
-    <div class="kenburns-top"></div>
+  <!-- <div class="image--container contenedor-nombre">
+    <div class="kenburns-top"></div> -->
     <div class="container">
       <div class="name"></div>
       <Transition name="fade" mode="out-in">
@@ -31,7 +31,7 @@
         </h2>
       </Transition>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script setup>
