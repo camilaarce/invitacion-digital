@@ -110,4 +110,5 @@ import HomeView from "./views/HomeView.vue";
     transform: scale(1);
   }
 }
+
 </style>

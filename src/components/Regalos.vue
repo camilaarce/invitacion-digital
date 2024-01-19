@@ -165,4 +165,14 @@ h3 {
   filter: blur(10px);
   transform: translateY(-100%);
 }
+
+@media screen and (max-width: 1100px) {
+  h1 {
+    font-size: 50pt;
+  }
+
+  h3 {
+    font-size: 20pt;
+  }
+}
 </style>

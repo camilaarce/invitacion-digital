@@ -68,6 +68,7 @@ onMounted(() => {
   align-items: center;
   flex-direction: column;
   background-color: rgb(173, 233, 233);
+  padding: 0 5%;
 }
 
 h1 {
@@ -120,5 +121,11 @@ a {
   opacity: 0;
   filter: blur(10px);
   transform: translateY(100%);
+}
+
+@media screen and (max-width: 1100px) {
+  h1 {
+    font-size: 50pt;
+  }
 }
 </style>

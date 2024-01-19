@@ -148,7 +148,7 @@ onMounted(() => {
 
 h1 {
   font-family: "Lobster", sans-serif;
-  font-size: 90pt;
+  font-size: 150pt;
   color: rgb(51, 94, 94);
   z-index: 10;
   text-shadow: 0 0 10px #ffffff82, 0 0 30px #ffffff82, 0 0 0px #ffffff82;
@@ -182,5 +182,11 @@ h2 {
   opacity: 0;
   filter: blur(10px);
   transform: translateX(100px);
+}
+
+@media screen and (max-width: 1100px) {
+  h1 {
+    font-size: 50pt;
+  }
 }
 </style>
