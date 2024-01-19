@@ -152,12 +152,13 @@ h1 {
   color: rgb(51, 94, 94);
   z-index: 10;
   text-shadow: 0 0 10px #ffffff82, 0 0 30px #ffffff82, 0 0 0px #ffffff82;
-  padding: 2%;
+  padding: 8%;
 }
 
 h2 {
   color: rgb(169, 109, 68);
   z-index: 10;
+  margin-top: -7%;
 }
 
 .fade-enter-active,
@@ -184,9 +185,18 @@ h2 {
   transform: translateX(100px);
 }
 
+.v-col p {
+  padding: 0 0.5em;
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (max-width: 1100px) {
   h1 {
     font-size: 50pt;
+  }
+  .v-col {
+    width: 100%;
   }
 }
 </style>
