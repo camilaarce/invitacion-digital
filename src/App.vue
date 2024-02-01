@@ -22,9 +22,6 @@ import HomeView from "./views/HomeView.vue";
   padding: 0px;
   box-sizing: border-box;
   font-family: "Comfortaa", sans-serif;
-}
-
-body {
   overflow: hidden;
 }
 
